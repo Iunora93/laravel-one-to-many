@@ -14,17 +14,18 @@
   <div class="py-4">
     <h1>Crea Post</h1>
     
-    <select class="form-select" name="types_id" id="types_id">
-        <option value="">Nessun tipo</option>
-         @foreach ($types as $type)
-            <option value="{{$type->id}}" {{old('types_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
-         @endforeach
-        
-        
-    </select>
+    
     <div class="mt-4">
         <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <select class="form-select" name="types_id" id="types_id">
+                <option value="">Nessun tipo</option>
+                 @foreach ($types as $type)
+                    <option value="{{$type->id}}" {{old('types_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
+                 @endforeach
+                
+                
+            </select>
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci il titolo" value="{{ old('title') }}">
