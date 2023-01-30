@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Types extends Model
 {
-    use HasFactory;
-
+    use HasFactory;    
     protected $guarded = ['slug'];
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
 }

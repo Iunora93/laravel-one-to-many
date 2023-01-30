@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Types;
+use Illuminate\Support\Facades\Schema;
 use Mockery\Matcher\Type;
 use Illuminate\Support\Str;
+
 
 class TypesSeeder extends Seeder
 {
@@ -17,8 +19,11 @@ class TypesSeeder extends Seeder
      */
     public function run()
     {
-        Types::truncate();
         
+        Schema::disableForeignKeyConstraints();
+        Types::truncate();
+        Schema::enableForeignKeyConstraints();
+
         $types = ['Frontend', 'Backend', 'Devops', 'AI'];
 
         foreach( $types as $type ) {

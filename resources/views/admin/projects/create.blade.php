@@ -13,6 +13,15 @@
 @endif
   <div class="py-4">
     <h1>Crea Post</h1>
+    
+    <select class="form-select" name="types_id" id="types_id">
+        <option value="">Nessun tipo</option>
+         @foreach ($types as $type)
+            <option value="{{$type->id}}" {{old('types_id') == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
+         @endforeach
+        
+        
+    </select>
     <div class="mt-4">
         <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
